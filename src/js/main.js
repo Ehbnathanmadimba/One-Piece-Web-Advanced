@@ -376,20 +376,16 @@ sortSelect.addEventListener('change', () => {
     loadData();
   });
 
-  // Alle favorieten verwijderen
-  clearFavBtn.addEventListener('click', () => {
-    // Bevestiging vragen via confirm (form/user interaction)
-    const confirmed = window.confirm(
-      'Weet je zeker dat je alle favorieten wilt verwijderen?'
-    );
+  // Alle favorieten direct verwijderen (zonder popup)
+clearFavBtn.addEventListener('click', () => {
+  clearFavorites();
 
-    if (confirmed) {
-      clearFavorites();
-      updateFavCount(0);
-      renderFavoriteCards([]);
-      console.log('[Main] 🗑️ Alle favorieten gewist');
-    }
-  });
+  // UI direct updaten
+  updateFavCount(0);
+  renderFavoriteCards([]);
+
+  console.log('[Main] 🗑️ Alle favorieten direct verwijderd');
+});
 
   console.log('[Main] ✅ Alle event listeners gekoppeld');
 };

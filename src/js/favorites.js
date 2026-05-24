@@ -87,10 +87,11 @@ export const isFavorite = (id) => {
  
 // ── clearFavorites ────────────────────────────────────────────
 /**
- * Verwijdert ALLE favorieten uit LocalStorage.
+ * Verwijdert alle favorieten uit LocalStorage.
  */
 export const clearFavorites = () => {
   localStorage.removeItem(STORAGE_KEY);
+
   console.log('[Favorites] 🗑️ Alle favorieten verwijderd');
 };
  
