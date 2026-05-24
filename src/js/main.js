@@ -35,6 +35,9 @@ let allCharacters = [];
 
 // De gefilterde/gesorteerde characters die getoond worden
 let displayedCharacters = [];
+// Pagination
+let currentPage = 1;
+const itemsPerPage = 24;
 
 // ── DOM Elementen ─────────────────────────────────────────────
 const btnCharacters = document.getElementById('btn-characters');
@@ -136,19 +139,84 @@ const applyFilters = () => {
     return 0;
   });
 
-  // Sla gefilterd resultaat op
-  displayedCharacters = result;
+ // Sla gefilterde resultaten op
+displayedCharacters = result;
 
-  // Render de kaartjes en update de teller
-  renderCards(displayedCharacters);
-  updateResultsInfo(displayedCharacters.length, allCharacters.length);
+// Pagination berekenen
+const startIndex = (currentPage - 1) * itemsPerPage;
+const endIndex = startIndex + itemsPerPage;
+
+// Alleen characters van huidige pagina tonen
+const paginatedCharacters = displayedCharacters.slice(
+  startIndex,
+  endIndex
+);
+
+// Render enkel huidige pagina
+renderCards(paginatedCharacters);
+
+// Update info
+updateResultsInfo(displayedCharacters.length, allCharacters.length);
+
+// Pagination buttons renderen
+renderPagination();
+
+}; // <-- applyFilters correct afsluiten
+
+// ── renderPagination ─────────────────────────────────────────
+
+const renderPagination = () => {
+  // Zoek bestaande pagination container
+  let pagination = document.getElementById('pagination');
+
+  // Bestaat nog niet? Maak hem aan
+  if (!pagination) {
+    pagination = document.createElement('div');
+    pagination.id = 'pagination';
+    pagination.style.display = 'flex';
+    pagination.style.justifyContent = 'center';
+    pagination.style.flexWrap = 'wrap';
+    pagination.style.gap = '10px';
+    pagination.style.margin = '30px 0';
+
+    cardsGrid.parentElement.appendChild(pagination);
+  }
+
+  pagination.innerHTML = '';
+
+  const totalPages = Math.ceil(
+    displayedCharacters.length / itemsPerPage
+  );
+
+  for (let page = 1; page <= totalPages; page++) {
+    const button = document.createElement('button');
+
+    button.textContent = page;
+
+    button.style.padding = '10px 15px';
+    button.style.borderRadius = '10px';
+    button.style.border = 'none';
+    button.style.cursor = 'pointer';
+
+    if (page === currentPage) {
+      button.style.backgroundColor = '#d62828';
+      button.style.color = 'white';
+    }
+
+    button.addEventListener('click', () => {
+      currentPage = page;
+      applyFilters();
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    pagination.appendChild(button);
+  }
 };
 
-// ── loadData ──────────────────────────────────────────────────
-/**
- * Async functie die data ophaalt en de app initialiseert.
- * Demonstreert: async/await, try/catch, fetch via api.js
- */
 const loadData = async () => {
   showLoader();
   hideError();
@@ -267,23 +335,30 @@ const bindEvents = () => {
   // Zoekfunctie: filter bij elke toetsaanslag
   // 'input' event triggert bij elke wijziging (ook plak, verwijder, etc.)
   searchInput.addEventListener('input', () => {
-    applyFilters();
-  });
+  currentPage = 1;
+  applyFilters();
+});
 
-  // Filter op status
-  filterStatus.addEventListener('change', () => {
-    applyFilters();
-  });
+// Filter op status
+// Reset pagination zodat resultaten starten op pagina 1
+filterStatus.addEventListener('change', () => {
+  currentPage = 1; // terug naar eerste pagina
+  applyFilters(); // statusfilter opnieuw toepassen
+});
 
-  // Filter op crew
-  filterCrew.addEventListener('change', () => {
-    applyFilters();
-  });
+// Filter op crew
+// Reset pagination zodat gebruiker niet op oude pagina blijft
+filterCrew.addEventListener('change', () => {
+  currentPage = 1; // terug naar eerste pagina
+  applyFilters(); // crewfilter opnieuw toepassen
+});
 
-  // Sortering
-  sortSelect.addEventListener('change', () => {
-    applyFilters();
-  });
+// Sortering wijzigen
+// Reset pagination zodat gesorteerde resultaten vanaf pagina 1 starten
+sortSelect.addEventListener('change', () => {
+  currentPage = 1; // terug naar eerste pagina
+  applyFilters(); // sortering opnieuw toepassen
+});
 
   // Favoriet-toggle via event delegation op het hoofdraster
   // (efficiënter dan listener op elke knop afzonderlijk)

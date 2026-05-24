@@ -181,7 +181,7 @@ export const createCardHTML = (character, inFavorites = false) => {
         <div class="card-details">
           <div class="detail-row">
             <span class="detail-label">Rol</span>
-            <span class="detail-value">${job ?? 'Onbekend'}</span>
+            <span class="detail-value">${job || 'Onbekend'}</span>
           </div>
           <div class="detail-row">
             <span class="detail-label">Crew</span>
@@ -190,11 +190,11 @@ export const createCardHTML = (character, inFavorites = false) => {
           
           <div class="detail-row">
             <span class="detail-label">Afkomst</span>
-            <span class="detail-value">${origin ?? 'Onbekend'}</span>
+            <span class="detail-value">${origin || 'Onbekend'}</span>
           </div>
           <div class="detail-row">
             <span class="detail-label">Leeftijd</span>
-            <span class="detail-value">${age ?? 'Onbekend'}</span>
+            <span class="detail-value">${age || 'Onbekend'}</span>
           </div>
           <div class="detail-row">
             <span class="detail-label">Duivels Fruit</span>
