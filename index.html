@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="nl" data-theme="yellow">
+<html lang="nl" data-theme="straw-hat">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Invincible Explorer</title>
+    <title>One Piece Explorer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/src/css/style.css" />
   </head>
   <body>
@@ -13,13 +16,13 @@
       <div class="header-inner">
 
         <div class="logo">
-          <span class="logo-mark">&#9650;</span>
-          <h1>Invincible <span class="logo-sub">Explorer</span></h1>
+          <span class="logo-mark">&#9760;</span>
+          <h1>One Piece <span class="logo-sub">Explorer</span></h1>
         </div>
 
         <!-- Navigatie tussen de twee secties -->
         <nav class="main-nav">
-          <button class="nav-btn active" id="btn-characters">Characters</button>
+          <button class="nav-btn active" id="btn-characters">&#9875; Characters</button>
           <button class="nav-btn" id="btn-favorites">
             &#9733; Favorieten <span class="fav-count" id="fav-count">0</span>
           </button>
@@ -28,10 +31,10 @@
         <!-- Thema-wisselaar -->
         <div class="theme-switcher">
           <span class="theme-label">Thema:</span>
-          <button class="theme-btn" data-theme="yellow" title="Invincible (geel)">&#11044;</button>
-          <button class="theme-btn" data-theme="red"    title="Omni-Man (rood)">&#11044;</button>
-          <button class="theme-btn" data-theme="dark"   title="Viltrumite (donker)">&#11044;</button>
-          <button class="theme-btn" data-theme="blue"   title="Atom Eve (blauw)">&#11044;</button>
+          <button class="theme-btn" data-theme="straw-hat" title="Straw Hat (rood)">&#11044;</button>
+          <button class="theme-btn" data-theme="marine"    title="Marine (blauw)">&#11044;</button>
+          <button class="theme-btn" data-theme="dark"      title="Blackbeard (donker)">&#11044;</button>
+          <button class="theme-btn" data-theme="gold"      title="Gold Roger (goud)">&#11044;</button>
         </div>
 
       </div>
@@ -45,7 +48,7 @@
 
         <div class="section-header">
           <h2>Characters</h2>
-          <p class="section-sub">Verken alle personages uit het Invincible universum</p>
+          <p class="section-sub">Verken alle personages uit het One Piece universum</p>
         </div>
 
         <!-- Zoek & Filter balk -->
@@ -62,19 +65,29 @@
           </div>
 
           <div class="filter-sort-wrapper">
+
+            <!-- Filter op status -->
             <select id="filter-status" class="control-select">
               <option value="">Alle statussen</option>
-              <option value="Alive">Alive</option>
-              <option value="Dead">Dead</option>
+              <option value="alive">Alive</option>
+              <option value="deceased">Deceased</option>
               <option value="unknown">Unknown</option>
             </select>
 
-            <select id="sort-select" class="control-select">
-              <option value="name-asc">Naam A → Z</option>
-              <option value="name-desc">Naam Z → A</option>
+            <!-- Filter op crew (dynamisch gevuld) -->
+            <select id="filter-crew" class="control-select">
+              <option value="">Alle crews</option>
             </select>
-          </div>
 
+            <!-- Sortering -->
+            <select id="sort-select" class="control-select">
+              <option value="name-asc">Naam A &#8594; Z</option>
+              <option value="name-desc">Naam Z &#8594; A</option>
+              <option value="bounty-desc">Bounty &#8595; (hoog)</option>
+              <option value="bounty-asc">Bounty &#8593; (laag)</option>
+            </select>
+
+          </div>
         </div>
 
         <!-- Resultaten-teller -->
@@ -88,12 +101,12 @@
         <!-- Laadindicator -->
         <div class="loader" id="loader">
           <div class="loader-spinner"></div>
-          <p>Data ophalen...</p>
+          <p>Plundering data van de Grand Line...</p>
         </div>
 
         <!-- Foutmelding -->
         <div class="error-message hidden" id="error-message">
-          <p>&#9888; Er ging iets mis bij het ophalen van data. Probeer opnieuw.</p>
+          <p>&#9888; Er ging iets mis bij het ophalen van data. Controleer je verbinding.</p>
           <button id="retry-btn" class="btn-primary">Opnieuw proberen</button>
         </div>
 
@@ -103,7 +116,7 @@
       <section id="section-favorites" class="content-section">
 
         <div class="section-header">
-          <h2>&#9733; Mijn Favorieten</h2>
+          <h2>&#9733; Mijn Crew</h2>
           <p class="section-sub">Jouw opgeslagen characters</p>
         </div>
 
@@ -115,8 +128,9 @@
 
         <!-- Lege staat als er geen favorieten zijn -->
         <div class="empty-state hidden" id="empty-favorites">
-          <p>&#9733; Je hebt nog geen favorieten opgeslagen.</p>
-          <p>Klik op het ster-icoon op een character-kaartje om het op te slaan!</p>
+          <div class="empty-icon">&#9760;</div>
+          <p class="empty-title">Je hebt nog geen crew!</p>
+          <p>Klik op het ster-icoon op een character-kaartje om ze toe te voegen.</p>
         </div>
 
         <!-- Favorieten-raster -->
@@ -131,14 +145,13 @@
     <!-- ===== FOOTER ===== -->
     <footer class="site-footer">
       <p>
-        Invincible Explorer &mdash; Data via
-        <a href="https://invincible-api.up.railway.app/" target="_blank">Invincible API</a>
+        One Piece Explorer &mdash; Data via
+        <a href="https://api-onepiece.com/en/documentation" target="_blank" rel="noopener">One Piece API</a>
       </p>
-      <p class="footer-sub">Gemaakt voor het vak Web Advanced &bull; EHB</p>
+      <p class="footer-sub">Gemaakt voor het vak Web Advanced &bull; EHB &bull; 2025&ndash;2026</p>
     </footer>
 
     <!-- Hoofd JS-bestand (type="module" is vereist voor Vite) -->
-    <script type="module" src="/src/main.js"></script>
-
+    <script type="module" src="/src/js/main.js"></script>
   </body>
 </html>
