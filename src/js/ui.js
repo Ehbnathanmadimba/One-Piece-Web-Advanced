@@ -83,9 +83,13 @@ const getStatusBadge = (status) => {
  
   const s = status.toLowerCase();
   // Ternary operators (keten) voor badge selectie
-  return s.includes('alive') || s.includes('vivant')
-    ? { class: 'badge-alive',   label: 'Alive' }
-    : s.includes('dead') || s.includes('décédé') || s.includes('deceased')
+  return s.includes('alive') ||
+       s.includes('living') ||
+       s.includes('vivant')
+  ? { class: 'badge-alive', label: 'Alive' }
+  : s.includes('dead') ||
+    s.includes('deceased') ||
+    s.includes('décédé')
     ? { class: 'badge-dead',    label: 'Dead' }
     : { class: 'badge-unknown', label: status };
 };
@@ -183,10 +187,7 @@ export const createCardHTML = (character, inFavorites = false) => {
             <span class="detail-label">Crew</span>
             <span class="detail-value">${crewName}</span>
           </div>
-          <div class="detail-row">
-            <span class="detail-label">Bounty</span>
-            <span class="detail-value bounty">${formatBounty(prime)}</span>
-          </div>
+          
           <div class="detail-row">
             <span class="detail-label">Afkomst</span>
             <span class="detail-value">${origin ?? 'Onbekend'}</span>

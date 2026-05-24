@@ -1,157 +1,156 @@
 <!DOCTYPE html>
 <html lang="nl" data-theme="straw-hat">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>One Piece Explorer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/src/css/style.css" />
-  </head>
-  <body>
 
-    <!-- ===== HEADER ===== -->
-    <header class="site-header">
-      <div class="header-inner">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>One Piece Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/src/css/style.css" />
+</head>
 
-        <div class="logo">
-          <span class="logo-mark">&#9760;</span>
-          <h1>One Piece <span class="logo-sub">Explorer</span></h1>
-        </div>
+<body>
 
-        <!-- Navigatie tussen de twee secties -->
-        <nav class="main-nav">
-          <button class="nav-btn active" id="btn-characters">&#9875; Characters</button>
-          <button class="nav-btn" id="btn-favorites">
-            &#9733; Favorieten <span class="fav-count" id="fav-count">0</span>
-          </button>
-        </nav>
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="header-inner">
 
-        <!-- Thema-wisselaar -->
-        <div class="theme-switcher">
-          <span class="theme-label">Thema:</span>
-          <button class="theme-btn" data-theme="straw-hat" title="Straw Hat (rood)">&#11044;</button>
-          <button class="theme-btn" data-theme="marine"    title="Marine (blauw)">&#11044;</button>
-          <button class="theme-btn" data-theme="dark"      title="Blackbeard (donker)">&#11044;</button>
-          <button class="theme-btn" data-theme="gold"      title="Gold Roger (goud)">&#11044;</button>
-        </div>
-
+      <div class="logo">
+        <span class="logo-mark">&#9760;</span>
+        <h1>One Piece <span class="logo-sub">Explorer</span></h1>
       </div>
-    </header>
 
-    <!-- ===== HOOFDINHOUD ===== -->
-    <main class="site-main">
+      <!-- Navigatie tussen de twee secties -->
+      <nav class="main-nav">
+        <button class="nav-btn active" id="btn-characters">&#9875; Characters</button>
+        <button class="nav-btn" id="btn-favorites">
+          &#9733; Favorieten <span class="fav-count" id="fav-count">0</span>
+        </button>
+      </nav>
 
-      <!-- == SECTIE 1: CHARACTERS == -->
-      <section id="section-characters" class="content-section active-section">
+      <!-- Thema-wisselaar -->
+      <div class="theme-switcher">
+        <span class="theme-label">Thema:</span>
+        <button class="theme-btn" data-theme="straw-hat" title="Straw Hat (rood)">&#11044;</button>
+        <button class="theme-btn" data-theme="marine" title="Marine (blauw)">&#11044;</button>
+        <button class="theme-btn" data-theme="dark" title="Blackbeard (donker)">&#11044;</button>
+        <button class="theme-btn" data-theme="gold" title="Gold Roger (goud)">&#11044;</button>
+      </div>
 
-        <div class="section-header">
-          <h2>Characters</h2>
-          <p class="section-sub">Verken alle personages uit het One Piece universum</p>
+    </div>
+  </header>
+
+  <!-- ===== HOOFDINHOUD ===== -->
+  <main class="site-main">
+
+    <!-- == SECTIE 1: CHARACTERS == -->
+    <section id="section-characters" class="content-section active-section">
+
+      <div class="section-header">
+        <h2>Characters</h2>
+        <p class="section-sub">Verken alle personages uit het One Piece universum</p>
+      </div>
+
+      <!-- Zoek & Filter balk -->
+      <div class="controls-bar">
+
+        <div class="search-wrapper">
+          <span class="search-icon">&#128269;</span>
+          <input type="text" id="search-input" class="search-input" placeholder="Zoek een character..." />
         </div>
 
-        <!-- Zoek & Filter balk -->
-        <div class="controls-bar">
+        <div class="filter-sort-wrapper">
 
-          <div class="search-wrapper">
-            <span class="search-icon">&#128269;</span>
-            <input
-              type="text"
-              id="search-input"
-              class="search-input"
-              placeholder="Zoek een character..."
-            />
-          </div>
+          <!-- Filter op status -->
+          <select id="filter-status" class="control-select">
+            <option value="">Alle statussen</option>
+            <option value="alive">Alive</option>
+            <option value="deceased">Deceased</option>
+            <option value="unknown">Unknown</option>
+          </select>
 
-          <div class="filter-sort-wrapper">
+          <!-- Filter op crew (dynamisch gevuld) -->
+          <select id="filter-crew" class="control-select">
+            <option value="">Alle crews</option>
+          </select>
 
-            <!-- Filter op status -->
-            <select id="filter-status" class="control-select">
-              <option value="">Alle statussen</option>
-              <option value="alive">Alive</option>
-              <option value="deceased">Deceased</option>
-              <option value="unknown">Unknown</option>
-            </select>
+          <!-- Sortering -->
+          <select id="sort-select" class="control-select">
+            <option value="name-asc">Naam A &#8594; Z</option>
+            <option value="name-desc">Naam Z &#8594; A</option>
 
-            <!-- Filter op crew (dynamisch gevuld) -->
-            <select id="filter-crew" class="control-select">
-              <option value="">Alle crews</option>
-            </select>
+          </select>
 
-            <!-- Sortering -->
-            <select id="sort-select" class="control-select">
-              <option value="name-asc">Naam A &#8594; Z</option>
-              <option value="name-desc">Naam Z &#8594; A</option>
-              <option value="bounty-desc">Bounty &#8595; (hoog)</option>
-              <option value="bounty-asc">Bounty &#8593; (laag)</option>
-            </select>
-
-          </div>
         </div>
+      </div>
 
-        <!-- Resultaten-teller -->
-        <p class="results-info" id="results-info">Laden...</p>
+      <!-- Resultaten-teller -->
+      <p class="results-info" id="results-info">Laden...</p>
 
-        <!-- Kaartjes-raster -->
-        <div class="cards-grid" id="cards-grid">
-          <!-- Kaartjes worden hier dynamisch ingevoegd via JS -->
-        </div>
+      <!-- Kaartjes-raster -->
+      <div class="cards-grid" id="cards-grid">
+        <!-- Kaartjes worden hier dynamisch ingevoegd via JS -->
+      </div>
 
-        <!-- Laadindicator -->
-        <div class="loader" id="loader">
-          <div class="loader-spinner"></div>
-          <p>Plundering data van de Grand Line...</p>
-        </div>
+      <!-- Laadindicator -->
+      <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+        <p>Plundering data van de Grand Line...</p>
+      </div>
 
-        <!-- Foutmelding -->
-        <div class="error-message hidden" id="error-message">
-          <p>&#9888; Er ging iets mis bij het ophalen van data. Controleer je verbinding.</p>
-          <button id="retry-btn" class="btn-primary">Opnieuw proberen</button>
-        </div>
+      <!-- Foutmelding -->
+      <div class="error-message hidden" id="error-message">
+        <p>&#9888; Er ging iets mis bij het ophalen van data. Controleer je verbinding.</p>
+        <button id="retry-btn" class="btn-primary">Opnieuw proberen</button>
+      </div>
 
-      </section>
+    </section>
 
-      <!-- == SECTIE 2: FAVORIETEN == -->
-      <section id="section-favorites" class="content-section">
+    <!-- == SECTIE 2: FAVORIETEN == -->
+    <section id="section-favorites" class="content-section">
 
-        <div class="section-header">
-          <h2>&#9733; Mijn Crew</h2>
-          <p class="section-sub">Jouw opgeslagen characters</p>
-        </div>
+      <div class="section-header">
+        <h2>&#9733; Mijn Crew</h2>
+        <p class="section-sub">Jouw opgeslagen characters</p>
+      </div>
 
-        <div class="favorites-actions">
-          <button id="clear-favorites-btn" class="btn-danger">
-            &#128465; Alle favorieten verwijderen
-          </button>
-        </div>
+      <div class="favorites-actions">
+        <button id="clear-favorites-btn" class="btn-danger">
+          &#128465; Alle favorieten verwijderen
+        </button>
+      </div>
 
-        <!-- Lege staat als er geen favorieten zijn -->
-        <div class="empty-state hidden" id="empty-favorites">
-          <div class="empty-icon">&#9760;</div>
-          <p class="empty-title">Je hebt nog geen crew!</p>
-          <p>Klik op het ster-icoon op een character-kaartje om ze toe te voegen.</p>
-        </div>
+      <!-- Lege staat als er geen favorieten zijn -->
+      <div class="empty-state hidden" id="empty-favorites">
+        <div class="empty-icon">&#9760;</div>
+        <p class="empty-title">Je hebt nog geen crew!</p>
+        <p>Klik op het ster-icoon op een character-kaartje om ze toe te voegen.</p>
+      </div>
 
-        <!-- Favorieten-raster -->
-        <div class="cards-grid" id="favorites-grid">
-          <!-- Favoriete kaartjes komen hier -->
-        </div>
+      <!-- Favorieten-raster -->
+      <div class="cards-grid" id="favorites-grid">
+        <!-- Favoriete kaartjes komen hier -->
+      </div>
 
-      </section>
+    </section>
 
-    </main>
+  </main>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="site-footer">
-      <p>
-        One Piece Explorer &mdash; Data via
-        <a href="https://api-onepiece.com/en/documentation" target="_blank" rel="noopener">One Piece API</a>
-      </p>
-      <p class="footer-sub">Gemaakt voor het vak Web Advanced &bull; EHB &bull; 2025&ndash;2026</p>
-    </footer>
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>
+      One Piece Explorer &mdash; Data via
+      <a href="https://api-onepiece.com/en/documentation" target="_blank" rel="noopener">One Piece API</a>
+    </p>
+    <p class="footer-sub">Gemaakt voor het vak Web Advanced &bull; EHB &bull; 2025&ndash;2026</p>
+  </footer>
 
-    <!-- Hoofd JS-bestand (type="module" is vereist voor Vite) -->
-    <script type="module" src="/src/js/main.js"></script>
-  </body>
+  <!-- Hoofd JS-bestand (type="module" is vereist voor Vite) -->
+  <script type="module" src="/src/js/main.js"></script>
+</body>
+
 </html>
