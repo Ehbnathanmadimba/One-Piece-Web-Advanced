@@ -766,3 +766,40 @@ a:hover {
     font-size: 1.6rem;
   }
 }
+/* ===== Taal selector mooier ===== */
+
+.lang-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.lang-label {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.75);
+  font-weight: 600;
+}
+
+.lang-select {
+  background: #111325;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  padding: 0.45rem 0.8rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+/* hover */
+.lang-select:hover {
+  border-color: #ff2b2b;
+}
+
+/* focus */
+.lang-select:focus {
+  outline: none;
+  border-color: #ff2b2b;
+  box-shadow: 0 0 0 3px rgba(255, 43, 43, 0.15);
+}
