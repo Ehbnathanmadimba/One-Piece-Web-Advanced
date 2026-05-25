@@ -142,3 +142,62 @@ Google Fonts – Pirata One & Crimson Pro
 AI-hulp
 
 Gesprekken met Claude (Anthropic) zijn gebruikt als ondersteuning bij het schrijven van deze README en het opzetten van de basisstructuur. De volledige chatgeschiedenis is beschikbaar op verzoek.
+
+
+# AI Log – Gebruik van AI in dit project
+
+## Doel
+Tijdens de ontwikkeling van dit project werd AI gebruikt als ondersteunend hulpmiddel voor brainstorming, debugging, uitleg van concepten en hulp bij code-structuur. De uiteindelijke implementatie, aanpassingen en testen werden manueel gecontroleerd en aangepast.
+
+## Gebruikte AI-tools
+- ChatGPT
+- Claude AI
+
+## Hoe AI werd gebruikt
+
+### 1. Projectidee en planning
+AI werd gebruikt om:
+- ideeën te genereren voor een website gebaseerd op een API;
+- een mogelijke mappenstructuur voor het project voor te stellen;
+- advies te geven over componentstructuur en best practices.
+
+### 2. Code ondersteuning
+AI werd gebruikt om:
+- voorbeeldcode te genereren voor JavaScript-functionaliteiten;
+- hulp te geven bij API-calls en het verwerken van externe data;
+- uitleg te geven over moderne JavaScript concepten (DOM, async/await, fetch, classes, modules);
+- codevoorbeelden te geven die nadien manueel aangepast werden.
+
+### 3. Debugging
+AI hielp bij:
+- het oplossen van JavaScript fouten;
+- debugging van API requests;
+- foutopsporing in console errors;
+- verbeteren van codeleesbaarheid.
+
+### 4. Styling en UX
+AI werd gebruikt voor:
+- suggesties rond layout en styling;
+- verbeteren van navigatie en gebruikerservaring;
+- ideeën voor responsive design.
+
+## Controle en validatie
+Alle gegenereerde code werd:
+- manueel nagekeken;
+- getest in de browser;
+- aangepast aan de vereisten van de opdracht;
+- gedebugd wanneer fouten voorkwamen.
+
+## Link met leerstof
+Tijdens dit project werden concepten uit de cursus toegepast zoals:
+- DOM manipulatie;
+- moderne JavaScript syntax;
+- asynchronous programming (`fetch`, `async/await`);
+- classes;
+- debugging technieken;
+- browser features en API-integratie.
+
+De gebruikte leerstof uit Web Advanced werd toegepast tijdens de implementatie van het project. :contentReference[oaicite:0]{index=0}
+
+## Reflectie
+AI werd gebruikt als ondersteuning en leerhulpmiddel, niet als vervanging van het leerproces. De gegenereerde oplossingen werden begrepen, getest en aangepast om aan de projectvereisten te voldoen.
