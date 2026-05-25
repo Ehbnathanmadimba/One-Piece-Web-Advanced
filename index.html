@@ -40,7 +40,15 @@
         <button class="theme-btn" data-theme="dark" title="Blackbeard (donker)">&#11044;</button>
         <button class="theme-btn" data-theme="gold" title="Gold Roger (goud)">&#11044;</button>
       </div>
+<div class="lang-switcher">
+  <span class="lang-label">Taal:</span>
 
+  <select id="lang-select" class="lang-select">
+    <option value="nl">NL</option>
+    <option value="en">EN</option>
+    <option value="fr">FR</option>
+  </select>
+</div>
     </div>
   </header>
 
@@ -51,9 +59,10 @@
     <section id="section-characters" class="content-section active-section">
 
       <div class="section-header">
-        <h2>Characters</h2>
-        <p class="section-sub">Verken alle personages uit het One Piece universum</p>
-      </div>
+        <h2 id="h2-characters">Characters</h2>
+<p class="section-sub" id="sub-chars">
+  Verken alle personages uit het One Piece universum
+</p>
 
       <!-- Zoek & Filter balk -->
       <div class="controls-bar">
@@ -114,8 +123,10 @@
     <section id="section-favorites" class="content-section">
 
       <div class="section-header">
-        <h2>&#9733; Mijn Crew</h2>
-        <p class="section-sub">Jouw opgeslagen characters</p>
+        <h2 id="h2-favorites">&#9733; Mijn Crew</h2>
+<p class="section-sub" id="sub-favs">
+  Jouw opgeslagen characters
+</p>
       </div>
 
       <div class="favorites-actions">
@@ -137,7 +148,64 @@
       </div>
 
     </section>
+    <!-- ===== DETAIL MODAL ===== -->
+<!-- modal-overlay: de donkere laag achter de modal -->
+<div class="modal-overlay hidden" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-char-name">
 
+  <!-- modal-panel: het witte venster zelf -->
+  <div class="modal-panel">
+
+    <!-- Gekleurde balk bovenaan (zelfde stijl als cards) -->
+    <div class="modal-topbar"></div>
+
+    <!-- Sluitknop rechtsboven -->
+    <button class="modal-close-btn" id="modal-close-btn" aria-label="Sluit modal">&#10005;</button>
+
+    <!-- Avatar + naam als header -->
+    <div class="modal-header">
+      <div class="modal-avatar" id="modal-avatar">L</div>
+      <div class="modal-header-info">
+        <h2 class="modal-char-name" id="modal-char-name">Naam</h2>
+        <!-- Status badge — JS vult class en tekst in -->
+        <span class="badge modal-status-badge" id="modal-status-badge">Status</span>
+      </div>
+    </div>
+
+    <!-- Detailrijen — zelfde stijl als .detail-row op de cards -->
+    <div class="modal-details">
+
+      <div class="modal-detail-row">
+        <span class="detail-label">Crew</span>
+        <span class="detail-value" id="modal-crew">—</span>
+      </div>
+
+      <div class="modal-detail-row">
+        <span class="detail-label">Rol</span>
+        <span class="detail-value" id="modal-job">—</span>
+      </div>
+
+      
+
+      <div class="modal-detail-row">
+        <span class="detail-label">Afkomst</span>
+        <span class="detail-value" id="modal-origin">—</span>
+      </div>
+
+      <div class="modal-detail-row">
+        <span class="detail-label">Leeftijd</span>
+        <span class="detail-value" id="modal-age">—</span>
+      </div>
+
+      <div class="modal-detail-row">
+        <span class="detail-label">Duivels Fruit</span>
+        <span class="detail-value" id="modal-fruit">—</span>
+      </div>
+
+    </div><!-- /modal-details -->
+
+  </div><!-- /modal-panel -->
+
+</div><!-- /modal-overlay -->
   </main>
 
   <!-- ===== FOOTER ===== -->
