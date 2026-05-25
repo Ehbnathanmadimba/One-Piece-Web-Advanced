@@ -23,7 +23,7 @@ import {
   isFavorite, clearFavorites, getFavoriteCount
 } from './favorites.js';
 import { initTheme } from './theme.js';
-import {
+import { updateLanguage, setLang } from './language.js';import {
   initUI, renderCards, renderFavoriteCards, showLoader,
   hideLoader, showError, hideError, updateFavCount,
   updateResultsInfo, populateCrewFilter, parseBounty
@@ -359,6 +359,12 @@ sortSelect.addEventListener('change', () => {
   currentPage = 1; // terug naar eerste pagina
   applyFilters(); // sortering opnieuw toepassen
 });
+// Taal wisselen
+const languageSelect = document.getElementById('lang-select');
+languageSelect.addEventListener('change', (e) => {
+  setLang(e.target.value);
+  updateLanguage();
+});
 
   // Favoriet-toggle via event delegation op het hoofdraster
   // (efficiënter dan listener op elke knop afzonderlijk)
@@ -403,7 +409,9 @@ const init = async () => {
 
   // 2. Pas opgeslagen thema toe
   initTheme();
-
+// taal toepassen
+updateLanguage();
+// taal initialiseren
   // 3. Koppel alle event listeners
   bindEvents();
 
